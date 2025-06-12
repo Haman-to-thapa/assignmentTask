@@ -20,11 +20,12 @@ export default defineConfig({
   server: {
     open: true, // Optional: open browser on dev server start
     proxy: {
-      '/api': 'http://localhost:5000'
+      '/api': 'https://assignmenttask-7d2a.onrender.com'
     }
   },
   preview: {
-    port: 3000 // Preview port for 'vite preview' command
+    port: process.env.PORT || 3000, // Use Render's PORT or fallback to 3000
+    host: '0.0.0.0' // Allow external connections for Render
   }
 });
 
