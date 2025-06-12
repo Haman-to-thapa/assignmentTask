@@ -25,6 +25,9 @@ const PORT = process.env.PORT || 4242;
 const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:5174",
+  "https://konnectimpact-staging.vercel.app",
+  "https://candidate-001-konnectimpact-module-payments.vercel.app",
+  // Add your production frontend URL here
 ];
 
 app.use(cors({
@@ -63,8 +66,12 @@ app.post("/create-checkout-session", async (req, res) => {
         },
       ],
       mode: "payment",
-      success_url: "http://localhost:5174/success?session_id={CHECKOUT_SESSION_ID}",
-      cancel_url: "http://localhost:5174/failure",
+      success_url: process.env.NODE_ENV === 'production'
+        ? "https://konnectimpact-staging.vercel.app/success?session_id={CHECKOUT_SESSION_ID}"
+        : "http://localhost:5174/success?session_id={CHECKOUT_SESSION_ID}",
+      cancel_url: process.env.NODE_ENV === 'production'
+        ? "https://konnectimpact-staging.vercel.app/failure"
+        : "http://localhost:5174/failure",
       automatic_tax: { enabled: false },
     });
 
