@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { useAppContext } from "../context/AdminContext";
+import PageHeader from "./PageHeader";
+import BackButton from "./BackButton";
 import { useNavigate } from "react-router-dom";
 
 const CreateCampaign = () => {
-  const { addCampaign } = useAppContext();
+  const { addCampaign, logout } = useAppContext();
   const [formData, setFormData] = useState({
     name: "",
     startDate: "",
@@ -42,57 +44,92 @@ const CreateCampaign = () => {
   };
 
   return (
-    <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">Create Campaign</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label className="block text-start">Campaign Name</label>
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            className="border p-2 w-full"
-            onChange={handleChange}
-          />
-          {errors.name && <p className="text-red-500">{errors.name}</p>}
+    <div className="min-h-screen bg-gray-50">
+      <PageHeader
+        title="Create Campaign"
+        subtitle="Set up a new impact campaign"
+        backTo="/dashboard"
+        actions={[
+          <button
+            key="logout"
+            onClick={logout}
+            className="btn btn-outline text-red-600 border-red-300 hover:bg-red-50"
+          >
+            Logout
+          </button>
+        ]}
+      />
+
+      <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
+        <div className="modern-card">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div>
+              <label className="form-label">Campaign Name</label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                className="form-input"
+                onChange={handleChange}
+                placeholder="Enter campaign name"
+              />
+              {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label className="form-label">Start Date</label>
+                <input
+                  type="date"
+                  name="startDate"
+                  value={formData.startDate}
+                  className="form-input"
+                  onChange={handleChange}
+                />
+                {errors.startDate && <p className="text-red-500 text-sm mt-1">{errors.startDate}</p>}
+              </div>
+              <div>
+                <label className="form-label">End Date</label>
+                <input
+                  type="date"
+                  name="endDate"
+                  value={formData.endDate}
+                  className="form-input"
+                  onChange={handleChange}
+                />
+                {errors.endDate && <p className="text-red-500 text-sm mt-1">{errors.endDate}</p>}
+              </div>
+            </div>
+
+            <div>
+              <label className="form-label">Conversion Rate</label>
+              <input
+                type="number"
+                name="conversionRate"
+                value={formData.conversionRate}
+                className="form-input"
+                onChange={handleChange}
+                placeholder="Enter conversion rate"
+                step="0.01"
+              />
+              {errors.conversionRate && <p className="text-red-500 text-sm mt-1">{errors.conversionRate}</p>}
+            </div>
+
+            <div className="flex gap-4 pt-4">
+              <button type="submit" className="btn btn-primary flex-1">
+                Create Campaign
+              </button>
+              <button
+                type="button"
+                onClick={() => navigate("/dashboard")}
+                className="btn btn-ghost"
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
         </div>
-        <div>
-          <label className="block text-start">Start Date</label>
-          <input
-            type="date"
-            name="startDate"
-            value={formData.startDate}
-            className="border p-2 w-full"
-            onChange={handleChange}
-          />
-          {errors.startDate && <p className="text-red-500">{errors.startDate}</p>}
-        </div>
-        <div>
-          <label className="block  text-start">End Date</label>
-          <input
-            type="date"
-            name="endDate"
-            value={formData.endDate}
-            className="border p-2 w-full"
-            onChange={handleChange}
-          />
-          {errors.endDate && <p className="text-red-500">{errors.endDate}</p>}
-        </div>
-        <div>
-          <label className="block text-start">Conversion Rate</label>
-          <input
-            type="number"
-            name="conversionRate"
-            value={formData.conversionRate}
-            className="border p-2 w-full"
-            onChange={handleChange}
-          />
-          {errors.conversionRate && <p className="text-red-500">{errors.conversionRate}</p>}
-        </div>
-        <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded">
-          Create
-        </button>
-      </form>
+      </div>
     </div>
   );
 };

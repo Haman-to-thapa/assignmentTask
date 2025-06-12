@@ -3,17 +3,18 @@ import RaffleCard from '../components/raffle/RaffleCard';
 import ReferralCard from '../components/referral/ReferralCard';
 import { useRaffle } from '../context/RaffleContext';
 import { Gift, Award, Share2, Users } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Dashboard: React.FC<{}> = () => {
   const { awardTicket } = useRaffle();
+  const navigate = useNavigate();
 
   const handleActionComplete = (actionType: string) => {
-    // This function would be called when a user completes an action
-    // In a real app, you'd verify the action was completed before awarding
+    // Optionally award ticket first (or after donation page)
     awardTicket(actionType);
+    // Redirect to /donation page
+    navigate('/donation');
   };
-
   return (
     <div className="container mx-auto px-4">
       <div className="mb-8">

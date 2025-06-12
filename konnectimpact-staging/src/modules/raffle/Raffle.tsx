@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ToastProvider } from '../../context/ToastContext';
-import { RaffleProvider } from '../../context/RaffleContext';
+import { Routes, Route } from 'react-router-dom';
 import Header from '../../components/layout/Header';
 import Dashboard from '../../page/Dashboard';
 import InfluencerLeaderboard from '../../page/InfluncerLeaderboard';
@@ -23,26 +20,20 @@ function Raffle() {
   }, []);
 
   return (
-
-    <ToastProvider>
-      <RaffleProvider>
-        <div className="min-h-screen bg-neutral-light flex flex-col">
-          <Header />
-          <main className="flex-grow py-6">
-            <Routes>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/influencers" element={<InfluencerLeaderboard />} />
-            </Routes>
-          </main>
-          <footer className="bg-white py-4 border-t border-neutral-medium">
-            <div className="container mx-auto text-center text-neutral-dark">
-              <p>© 2025 KonnectImpact. All rights reserved.</p>
-            </div>
-          </footer>
+    <div className="min-h-screen bg-neutral-light flex flex-col">
+      <Header />
+      <main className="flex-grow py-6">
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/influencers" element={<InfluencerLeaderboard />} />
+        </Routes>
+      </main>
+      <footer className="bg-white py-4 border-t border-neutral-medium">
+        <div className="container mx-auto text-center text-neutral-dark">
+          <p>© 2025 KonnectImpact. All rights reserved.</p>
         </div>
-      </RaffleProvider>
-    </ToastProvider>
-
+      </footer>
+    </div>
   );
 }
 

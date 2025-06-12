@@ -38,8 +38,6 @@ export default function PaymentAman() {
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap"
         rel="stylesheet"
       />
-      {/* Lucide Icons */}
-      <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 
       {/* Header */}
       <header>

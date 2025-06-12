@@ -1,8 +1,8 @@
 /* ===== Brand Guidelines Implementation ===== */
 :root {
-  --teal-primary: #00897B;
-  --teal-dark: #00796B;
-  --lime-accent: #CDDC39;
+  --teal-primary: #00897b;
+  --teal-dark: #00796b;
+  --lime-accent: #cddc39;
   --gray-light: #f5f5f5;
   --gray-medium: #e0e0e0;
   --white: #ffffff;
@@ -10,7 +10,7 @@
 
 /* ===== Base Styles ===== */
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   background-color: var(--gray-light);
   margin: 0;
   padding: 0;
@@ -25,8 +25,10 @@ body {
 }
 
 /* ===== Typography ===== */
-h1, h2, h3 {
-  font-family: 'Montserrat', sans-serif;
+h1,
+h2,
+h3 {
+  font-family: "Montserrat", sans-serif;
   color: var(--teal-primary);
 }
 
@@ -72,7 +74,7 @@ h2 {
   padding: 12px 15px;
   border: 1px solid var(--gray-medium);
   border-radius: 4px;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 16px;
 }
 
@@ -112,7 +114,7 @@ h2 {
 .impact-btn {
   padding: 14px 20px;
   border-radius: 4px;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-size: 16px;
   cursor: pointer;
@@ -145,9 +147,9 @@ h2 {
 }
 
 .impact-message-error {
-  background-color: #FFEBEE;
-  color: #C62828;
-  border: 1px solid #EF9A9A;
+  background-color: #ffebee;
+  color: #c62828;
+  border: 1px solid #ef9a9a;
 }
 
 .impact-message-hidden {
@@ -156,8 +158,14 @@ h2 {
 
 /* ===== Animations ===== */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ===== Footer ===== */
@@ -173,7 +181,7 @@ h2 {
   .impact-container {
     padding: 15px;
   }
-  
+
   .impact-card {
     padding: 20px;
   }

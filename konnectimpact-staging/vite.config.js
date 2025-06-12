@@ -18,7 +18,10 @@ export default defineConfig({
     exclude: ['lucide-react'],
   },
   server: {
-    open: true // Optional: open browser on dev server start
+    open: true, // Optional: open browser on dev server start
+    proxy: {
+      '/api': 'http://localhost:5000'
+    }
   },
   preview: {
     port: 3000 // Preview port for 'vite preview' command

@@ -50,8 +50,8 @@ export default function TransactionHistory() {
             <button
               key={type}
               className={`px-4 py-2 rounded-full text-sm font-medium border transition ${filter === type
-                  ? 'bg-primary text-white'
-                  : 'bg-white dark:bg-gray-700 text-primary border-primary'
+                ? 'bg-primary text-white'
+                : 'bg-white dark:bg-gray-700 text-primary border-primary'
                 }`}
               onClick={() => setFilter(type)}
             >
